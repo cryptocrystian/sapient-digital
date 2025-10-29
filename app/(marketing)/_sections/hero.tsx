@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/Button";
 import { StatChip } from "@/components/ui/StatChip";
 import { Reveal, Parallax } from "@/components/motion/Reveal";

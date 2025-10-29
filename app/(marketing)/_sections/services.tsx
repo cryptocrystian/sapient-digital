@@ -1,3 +1,5 @@
+"use client";
+
 import ServiceCard from "@/components/ServiceCard";
 import { Service } from "@/types/service";
 import { Reveal } from "@/components/motion/Reveal";

@@ -1,3 +1,5 @@
+"use client";
+
 import { Reveal } from "@/components/motion/Reveal";
 
 const cadences = [

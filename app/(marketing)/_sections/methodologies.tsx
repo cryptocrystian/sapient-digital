@@ -1,3 +1,5 @@
+"use client";
+
 import { Lightbulb, Crown, Rocket, Share2 } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 
