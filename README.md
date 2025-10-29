@@ -1,4 +1,4 @@
-# sapient-digitalSapient Digital — Website
+# sapient-digital website
 
 Dark-first, enterprise-grade marketing site for Sapient Digital (integrated PR, Content, SEO).
 Built with Next.js 15 (App Router) + TypeScript + Tailwind + shadcn/ui and a tokenized design system.
