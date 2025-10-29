@@ -49,17 +49,27 @@ body {
 
   .gradient-border {
     position: relative;
-    border: 1px solid transparent;
+    border: 2px solid transparent !important;
     background: linear-gradient(var(--sd-bg-700), var(--sd-bg-700)) padding-box,
       linear-gradient(
           90deg,
-          rgba(70, 195, 138, 0.2),
-          rgba(212, 178, 102, 0.2),
-          rgba(70, 195, 138, 0.2)
+          rgba(70, 195, 138, 0.8),
+          rgba(212, 178, 102, 0.8),
+          rgba(70, 195, 138, 0.8)
         )
         border-box;
     background-size: 200% 100%;
-    animation: shimmer 6s linear infinite;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* Test animation - should be VERY obvious */
+  @keyframes pulse-test {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .gradient-border {
+    animation: shimmer 3s linear infinite, pulse-test 2s ease-in-out infinite;
   }
 }
 

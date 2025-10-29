@@ -7,39 +7,32 @@ import { events } from "@/lib/analytics";
 export default function ContactForm() {
   const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      company: formData.get("company"),
-      message: formData.get("message"),
-    };
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const company = formData.get("company");
+    const message = formData.get("message");
 
     setFormState("submitting");
     events.form_start("contact");
 
-    try {
-      const response = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`New Contact from ${name}${company ? ` (${company})` : ''}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nCompany: ${company || 'N/A'}\n\nMessage:\n${message}`);
+    const mailtoLink = `mailto:hello@sapient.digital?subject=${subject}&body=${body}`;
 
-      if (response.ok) {
-        setFormState("success");
-        events.form_submit("contact", true);
-        (e.target as HTMLFormElement).reset();
-      } else {
-        setFormState("error");
-        events.form_submit("contact", false);
-      }
-    } catch (error) {
-      setFormState("error");
-      events.form_submit("contact", false);
-    }
+    // Open mailto link
+    window.location.href = mailtoLink;
+
+    // Show success message
+    setTimeout(() => {
+      setFormState("success");
+      events.form_submit("contact", true);
+      (e.target as HTMLFormElement).reset();
+    }, 500);
   };
 
   return (
