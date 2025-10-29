@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sd-bg-900: #0F1613;
+  --sd-bg-800: #13201A;
+  --sd-bg-700: #183125;
+  --sd-fg-100: #E7F1EB;
+  --sd-fg-300: #A7B3AD;
+  --sd-fg-500: #8C9A95;
+  --sd-accent-500: #33B07A;
+  --sd-accent-400: #46C38A;
+  --sd-gold-400: #D4B266;
+  --sd-danger-500: #E05A5A;
+  --sd-info-400: #6BB4FF;
+  --sd-warn-400: #E6A94B;
+  --sd-line-700: rgba(255, 255, 255, .08);
+  --sd-line-600: rgba(255, 255, 255, .12);
+  --sd-overlay: rgba(3, 6, 5, .5);
+}
+
+html,
+body {
+  background: var(--sd-bg-900);
+  color: var(--sd-fg-100);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  .reveal-on {
+    opacity: 1;
+    transform: none;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .gradient-border {
+    position: relative;
+    border: 1px solid transparent;
+    background: linear-gradient(var(--sd-bg-700), var(--sd-bg-700)) padding-box,
+      linear-gradient(
+          90deg,
+          rgba(70, 195, 138, 0.2),
+          rgba(212, 178, 102, 0.2),
+          rgba(70, 195, 138, 0.2)
+        )
+        border-box;
+    background-size: 200% 100%;
+    animation: shimmer 6s linear infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-line-700;
+  }
+  body {
+    @apply bg-bg-900 text-fg-100 font-[family-name:var(--font-inter)];
+  }
+}
