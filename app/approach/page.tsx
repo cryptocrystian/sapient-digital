@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import SageMesh from "@/components/diagrams/SageMesh";
 
 export const metadata = {
   title: "Our Approach — Sapient Digital",
@@ -55,6 +56,10 @@ export default function ApproachPage() {
               </p>
             </div>
           </div>
+        </section>
+
+        <section className="mx-auto max-w-6xl mb-16">
+          <SageMesh />
         </section>
 
         <div className="max-w-5xl mx-auto">
