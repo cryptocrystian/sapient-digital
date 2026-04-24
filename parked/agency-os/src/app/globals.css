@@ -1,0 +1,435 @@
+/* Agency OS — Design System v1.1 — Updated badge set */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Agency OS — Design System
+ * Inherits DS v3.1 tokens from Pravado
+ * Agency-specific additions noted with [AGENCY]
+ */
+
+@layer base {
+  :root {
+    /* DS v3 Core Palette (shared with Pravado) */
+    --dark-bg: #0A0A0F;
+    --dark-card: #13131A;
+    --dark-border: #1F1F28;
+    --cyber-blue: #00D9FF;
+    --electric-purple: #A855F7;
+
+    --slate-0: #0A0A0F;
+    --slate-1: #0E0E14;
+    --slate-2: #13131A;
+    --slate-3: #19191F;
+    --slate-4: #1F1F28;
+    --slate-5: #2A2A35;
+    --slate-6: #3D3D4A;
+    --white-0: #E8E8ED;
+
+    --brand-iris: #A855F7;
+    --brand-cyan: #00D9FF;
+    --brand-violet: #7C3AED;
+    --brand-teal: #14B8A6;
+    --brand-magenta: #D946EF;
+    --brand-amber: #F59E0B;
+
+    --semantic-info: #00D9FF;
+    --semantic-success: #22C55E;
+    --semantic-warning: #EAB308;
+    --semantic-danger: #EF4444;
+
+    --page-bg: var(--dark-bg);
+    --panel-bg: var(--dark-card);
+    --text: var(--white-0);
+    --muted: var(--slate-6);
+    --border-subtle: var(--dark-border);
+
+    --radius-xs: 4px;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-2xl: 16px;
+    --radius: var(--radius-md);
+
+    --elev-0: none;
+    --elev-1: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --elev-2: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --elev-3: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --shadow-panel: var(--elev-3);
+
+    --motion-duration-xs: 100ms;
+    --motion-duration-sm: 150ms;
+    --motion-duration-md: 250ms;
+    --motion-duration-lg: 400ms;
+    --motion-ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --z-base: 0;
+    --z-nav: 30;
+    --z-modal: 40;
+    --z-popover: 50;
+    --z-toast: 60;
+
+    /* [AGENCY] Gold accent for Sapient Digital branding */
+    --agency-gold: #C4A25C;
+    --agency-gold-light: #FDF6E8;
+    --agency-gold-muted: rgba(196, 162, 92, 0.15);
+
+    /* shadcn compat */
+    --background: 213 39% 6%;
+    --foreground: 206 47% 94%;
+    --card: 215 33% 10%;
+    --card-foreground: 206 47% 94%;
+    --popover: 215 33% 10%;
+    --popover-foreground: 206 47% 94%;
+    --primary: 239 93% 70%;
+    --primary-foreground: 213 39% 6%;
+    --secondary: 213 26% 17%;
+    --secondary-foreground: 206 47% 94%;
+    --muted-foreground: 211 24% 32%;
+    --accent: 213 26% 17%;
+    --accent-foreground: 206 47% 94%;
+    --destructive: 0 70% 71%;
+    --destructive-foreground: 206 47% 94%;
+    --border: 213 26% 17%;
+    --input: 213 26% 17%;
+    --ring: 187 100% 61%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { color-scheme: dark; }
+  body {
+    @apply bg-page text-text antialiased;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+  *:focus-visible {
+    @apply outline-none ring-2 ring-brand-cyan ring-offset-2 ring-offset-page;
+  }
+}
+
+@layer components {
+  .panel-card {
+    background-color: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    @apply rounded-lg shadow-panel;
+  }
+
+  /* [AGENCY] Gold-accented section header */
+  .agency-section-header {
+    border-left: 3px solid var(--agency-gold);
+    @apply pl-3;
+  }
+
+  /* [AGENCY] Status badges */
+  .badge-active {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--semantic-success);
+    background-color: rgba(34, 197, 94, 0.1);
+  }
+  .badge-onboarding {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-amber);
+    background-color: rgba(245, 158, 11, 0.1);
+  }
+  .badge-paused {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--slate-6);
+    background-color: rgba(61, 61, 74, 0.3);
+  }
+  .badge-churned {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--semantic-danger);
+    background-color: rgba(239, 68, 68, 0.1);
+  }
+
+  /* [AGENCY] Video production status badges */
+  .badge-queued {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-amber);
+    background-color: rgba(245, 158, 11, 0.1);
+  }
+  .badge-generating {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-iris);
+    background-color: rgba(168, 85, 247, 0.1);
+  }
+  .badge-review {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--cyber-blue);
+    background-color: rgba(0, 217, 255, 0.1);
+  }
+  .badge-approved {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--semantic-success);
+    background-color: rgba(34, 197, 94, 0.1);
+  }
+  .badge-published {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-teal);
+    background-color: rgba(20, 184, 166, 0.1);
+  }
+
+  /* Tier badges */
+  .badge-tier1 {
+    @apply text-xs px-2 py-0.5 rounded-full font-semibold uppercase tracking-wide;
+    color: var(--agency-gold);
+    background-color: var(--agency-gold-muted);
+  }
+  .badge-tier2 {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--white-0);
+    background-color: var(--slate-4);
+  }
+  .badge-tier3 {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--slate-6);
+    background-color: var(--slate-3);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-md;
+    background-color: var(--electric-purple);
+    color: white;
+    transition: all var(--motion-duration-sm) var(--motion-ease-standard);
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: rgba(168, 85, 247, 0.85);
+    transform: translateY(-1px);
+  }
+
+  /* [AGENCY] Gold primary button for high-emphasis actions */
+  .btn-agency {
+    @apply inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-md;
+    background-color: var(--agency-gold);
+    color: var(--dark-bg);
+    transition: all var(--motion-duration-sm) var(--motion-ease-standard);
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-agency:hover:not(:disabled) {
+    background-color: rgba(196, 162, 92, 0.85);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-md;
+    background-color: var(--dark-card);
+    color: var(--white-0);
+    border: 1px solid var(--dark-border);
+    transition: all var(--motion-duration-sm) var(--motion-ease-standard);
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background-color: var(--slate-4);
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2.5 text-sm rounded-md;
+    background-color: var(--slate-3);
+    color: var(--white-0);
+    border: 1px solid var(--dark-border);
+    transition: border-color var(--motion-duration-sm) var(--motion-ease-standard);
+  }
+  .input-field::placeholder { color: var(--slate-6); }
+  .input-field:focus {
+    outline: none;
+    border-color: var(--cyber-blue);
+    box-shadow: 0 0 0 2px rgba(0, 217, 255, 0.15);
+  }
+
+  /* [AGENCY] Pipeline status timeline dot */
+  .pipeline-dot {
+    @apply w-3 h-3 rounded-full border-2 border-panel flex-shrink-0;
+  }
+  .pipeline-dot-complete { background-color: var(--semantic-success); }
+  .pipeline-dot-active { background-color: var(--cyber-blue); }
+  .pipeline-dot-pending { background-color: var(--slate-5); }
+  .pipeline-dot-error { background-color: var(--semantic-danger); }
+
+  /* Priority badges */
+  .badge-critical {
+    @apply text-xs px-2 py-0.5 rounded-full font-semibold;
+    color: var(--semantic-danger);
+    background-color: rgba(239, 68, 68, 0.12);
+  }
+  .badge-high {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-amber);
+    background-color: rgba(245, 158, 11, 0.12);
+  }
+  .badge-medium {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-cyan);
+    background-color: rgba(0, 217, 255, 0.1);
+  }
+  .badge-low {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--slate-6);
+    background-color: var(--slate-4);
+  }
+
+  /* Task / content status badges */
+  .badge-open {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-cyan);
+    background-color: rgba(0, 217, 255, 0.1);
+  }
+  .badge-in-progress {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-iris);
+    background-color: rgba(168, 85, 247, 0.1);
+  }
+  .badge-blocked {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--semantic-danger);
+    background-color: rgba(239, 68, 68, 0.1);
+  }
+  .badge-done {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--semantic-success);
+    background-color: rgba(34, 197, 94, 0.1);
+  }
+  .badge-planned {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--slate-6);
+    background-color: var(--slate-4);
+  }
+  .badge-briefed {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-cyan);
+    background-color: rgba(0, 217, 255, 0.1);
+  }
+
+  /* Extended video / pitch badges */
+  .badge-scripting {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-amber);
+    background-color: rgba(245, 158, 11, 0.1);
+  }
+  .badge-script-review {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-amber);
+    background-color: rgba(245, 158, 11, 0.1);
+  }
+  .badge-internal-review {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-cyan);
+    background-color: rgba(0, 217, 255, 0.1);
+  }
+  .badge-client-review {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-teal);
+    background-color: rgba(20, 184, 166, 0.1);
+  }
+  .badge-revision {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--semantic-warning);
+    background-color: rgba(234, 179, 8, 0.1);
+  }
+  .badge-publishing {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--semantic-success);
+    background-color: rgba(34, 197, 94, 0.1);
+  }
+  .badge-failed {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--semantic-danger);
+    background-color: rgba(239, 68, 68, 0.1);
+  }
+
+  /* Pitch status badges */
+  .badge-draft {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--slate-6);
+    background-color: var(--slate-4);
+  }
+  .badge-sent {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-cyan);
+    background-color: rgba(0, 217, 255, 0.1);
+  }
+  .badge-opened {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-amber);
+    background-color: rgba(245, 158, 11, 0.1);
+  }
+  .badge-responded {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-iris);
+    background-color: rgba(168, 85, 247, 0.1);
+  }
+  .badge-placed {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--semantic-success);
+    background-color: rgba(34, 197, 94, 0.1);
+  }
+  .badge-declined {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--semantic-danger);
+    background-color: rgba(239, 68, 68, 0.1);
+  }
+  .badge-no-response {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--slate-6);
+    background-color: var(--slate-4);
+  }
+
+  /* Report badges */
+  .badge-ready {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--brand-amber);
+    background-color: rgba(245, 158, 11, 0.1);
+  }
+  .badge-sent {
+    @apply text-xs px-2 py-0.5 rounded-full font-medium;
+    color: var(--semantic-success);
+    background-color: rgba(34, 197, 94, 0.1);
+  }
+
+  /* Alert styles */
+  .alert-warning {
+    @apply px-4 py-3 rounded-md text-sm font-medium;
+    color: var(--semantic-warning);
+    background-color: rgba(234, 179, 8, 0.08);
+    border: 1px solid rgba(234, 179, 8, 0.2);
+  }
+  .alert-info {
+    @apply px-4 py-3 rounded-md text-sm;
+    color: var(--brand-cyan);
+    background-color: rgba(0, 217, 255, 0.06);
+    border: 1px solid rgba(0, 217, 255, 0.15);
+  }
+  .alert-error {
+    @apply px-4 py-3 rounded-md text-sm;
+    color: var(--semantic-danger);
+    background-color: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+
+  /* Typography */
+  .text-heading-xl { @apply text-2xl font-bold tracking-tight; }
+  .text-heading-lg { @apply text-xl font-semibold tracking-tight; }
+  .text-heading-md { @apply text-lg font-semibold; }
+  .text-heading-sm { @apply text-sm font-semibold; }
+  .text-stat       { @apply text-3xl font-bold tabular-nums; }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--agency-gold) 0%, #E8C97A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; }
+}

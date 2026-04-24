@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "framework": "nextjs",
+  "installCommand": "pnpm install --no-frozen-lockfile",
+  "buildCommand": "pnpm --filter @pravado/feature-flags build && pnpm --filter @pravado/types build && pnpm --filter @pravado/utils build && pnpm --filter @pravado/validators build && pnpm --filter @sapient/agency-os build",
+  "outputDirectory": "apps/agency-os/.next",
+  "regions": ["iad1"]
+}
