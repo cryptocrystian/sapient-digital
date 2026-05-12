@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── DESIGN TOKENS ── */
+:root {
+  --surface-base:     #0E0D12;
+  --surface-elevated: #19181F;
+  --surface-overlay:  #201E27;
+  --gold:         #C8934A;
+  --gold-dim:     rgba(200,147,74,.10);
+  --gold-border:  rgba(200,147,74,.20);
+  --violet:       #8B7FE8;
+  --violet-dim:   rgba(139,127,232,.10);
+  --violet-border:rgba(139,127,232,.20);
+  --text-primary:   #F0EDE8;
+  --text-secondary: rgba(240,237,232,.55);
+  --text-tertiary:  rgba(240,237,232,.28);
+  --border:        rgba(255,255,255,.06);
+  --border-subtle: rgba(255,255,255,.04);
+  --ease-out-expo: cubic-bezier(.16,1,.3,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+
+body {
+  background: var(--surface-base);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Hide system cursor only on hover-capable pointer-fine devices (desktop with mouse). */
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+  a, button, input, textarea, select, label, [role="button"] { cursor: none; }
+}
+
+/* Custom cursor — only render on hover-capable pointer-fine devices. */
+#cursor, #cursor-ring { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  #cursor {
+    display: block; position: fixed; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold); pointer-events: none; z-index: 9999;
+    transform: translate(-50%,-50%); top: -100px; left: -100px;
+    transition: width .25s var(--ease-out-expo), height .25s var(--ease-out-expo);
+  }
+  #cursor-ring {
+    display: block; position: fixed; width: 32px; height: 32px; border-radius: 50%;
+    border: 1px solid rgba(200,147,74,.35); pointer-events: none; z-index: 9998;
+    transform: translate(-50%,-50%); top: -100px; left: -100px;
+    transition: width .3s var(--ease-out-expo), height .3s var(--ease-out-expo);
+  }
+}
+
+/* Grain overlay */
+.grain {
+  position: fixed; inset: 0; pointer-events: none; z-index: 9997; opacity: .028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .8s var(--ease-out-expo), transform .8s var(--ease-out-expo);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .22s; }
+.reveal-delay-3 { transition-delay: .34s; }
+.reveal-delay-4 { transition-delay: .46s; }
+
+/* Fade-up entrance */
+.fade-up {
+  opacity: 0; transform: translateY(28px);
+  animation: fade-up-in .9s var(--ease-out-expo) both;
+}
+@keyframes fade-up-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+.delay-1 { animation-delay: .10s; }
+.delay-2 { animation-delay: .22s; }
+.delay-3 { animation-delay: .38s; }
+.delay-4 { animation-delay: .52s; }
+.delay-5 { animation-delay: .68s; }
+.delay-6 { animation-delay: .84s; }
+.delay-7 { animation-delay: .96s; }
+
+/* Marquee */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Dot pulse */
+@keyframes dot-pulse {
+  0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(200,147,74,0); }
+  50%     { opacity: .9; box-shadow: 0 0 0 4px rgba(200,147,74,.15); }
+}
+
+/* Badge pulse */
+@keyframes badge-pulse {
+  0%,100% { opacity: 1; }
+  50%     { opacity: .3; }
+}
+
+/* Spin */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,.12); border-radius: 2px; }
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .fade-up, .reveal { opacity: 1; transform: none; }
+}
+
+/* ── GRADIENT ORB BACKGROUNDS ── */
+.orb-gold {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,147,74,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.orb-violet {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,92,191,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── STAT GLOW ── */
+.stat-glow {
+  text-shadow: 0 0 40px rgba(200,147,74,.35), 0 0 80px rgba(200,147,74,.15);
+}
+
+/* ── SECTION BACKGROUNDS ── */
+.section-elevated { background: var(--surface-elevated); position: relative; }
+.section-base     { background: var(--surface-base);     position: relative; }
+
+/* ── PILLAR ACCENT BORDERS ── */
+.pillar-pr      { --pillar-accent: #C8934A; }   /* gold  */
+.pillar-content { --pillar-accent: #7C5CBF; }   /* violet */
+.pillar-aeo     { --pillar-accent: #4A9CC8; }   /* cyan-blue */
+.pillar-video   { --pillar-accent: #C84A7C; }   /* rose  */
+
+.pillar-card {
+  border-top: 2px solid var(--pillar-accent);
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--pillar-accent) 6%, var(--surface-elevated)) 0%,
+    var(--surface-elevated) 40%
+  );
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.pillar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px color-mix(in srgb, var(--pillar-accent) 15%, transparent);
+}
+
+/* Fallback for browsers without color-mix() support (Chrome < 111, etc.) */
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+  .pillar-card {
+    background: var(--surface-elevated);
+  }
+  .pillar-card:hover {
+    box-shadow: 0 12px 40px rgba(255, 255, 255, 0.06);
+  }
+}
+
+/* ── SIGNAL ENGINE DIAGRAM ── */
+/* 3 connecting lines, each staggered to start every 0.66s on a 2s cycle. */
+@keyframes signal-travel {
+  0%   { stroke-dashoffset: 0;    opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { stroke-dashoffset: -120; opacity: 0; }
+}
+.signal-line {
+  stroke-dasharray: 4 116;
+  animation: signal-travel 2s linear infinite;
+  will-change: stroke-dashoffset, opacity;
+}
+.signal-line-2 { animation-delay: .66s; }
+.signal-line-3 { animation-delay: 1.33s; }
+
+@keyframes signal-node-pulse {
+  0%, 100% { opacity: .9; }
+  50%      { opacity: 1; }
+}
+.signal-node-center { animation: signal-node-pulse 2s ease-in-out infinite; }
+
+/* ── MOBILE TUNING ── */
+@media (max-width: 600px) {
+  .stat-glow {
+    text-shadow:
+      0 0 25px rgba(200,147,74,.3),
+      0 0 50px rgba(200,147,74,.1);
+  }
+}
