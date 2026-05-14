@@ -91,10 +91,11 @@ export default function Proof() {
             letterSpacing: '-.022em',
             color: 'var(--text-primary)',
             marginBottom: '24px',
-            maxWidth: '900px',
+            maxWidth: '700px',
             textAlign: 'center',
             marginLeft: 'auto',
             marginRight: 'auto',
+            textWrap: 'balance',
           }}
         >
           Results that show up in the{' '}

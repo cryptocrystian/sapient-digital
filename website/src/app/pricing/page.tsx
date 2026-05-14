@@ -211,7 +211,7 @@ export default function PricingPage() {
             {TIERS.map((tier) => (
               <div
                 key={tier.name}
-                className="reveal"
+                className="reveal pricing-card"
                 style={{
                   borderRadius: '16px',
                   overflow: 'hidden',

@@ -9,10 +9,13 @@ interface PillarNode {
 }
 
 const PILLARS: PillarNode[] = [
-  { label: 'PR & Media',  shortLabel: 'PR',      color: '#C8934A', cx: 180, cy: 36,  labelDx: 0,   labelDy: -18 },
-  { label: 'AI Presence', shortLabel: 'AI',      color: '#4A9CC8', cx: 307, cy: 234, labelDx: 16,  labelDy: 0   },
-  { label: 'Content',     shortLabel: 'Content', color: '#7C5CBF', cx: 53,  cy: 234, labelDx: -16, labelDy: 0   },
+  { label: 'PR & Media',  shortLabel: 'PR',      color: '#C8934A', cx: 200, cy: 40,  labelDx: 0,   labelDy: -22 },
+  { label: 'AI Presence', shortLabel: 'AI',      color: '#4A9CC8', cx: 340, cy: 260, labelDx: 18,  labelDy: 0   },
+  { label: 'Content',     shortLabel: 'Content', color: '#7C5CBF', cx: 60,  cy: 260, labelDx: -12, labelDy: 0   },
 ];
+
+const HUB = { cx: 200, cy: 180, radius: 22 };
+const PILLAR_RADIUS = 13;
 
 const CHIPS = [
   'PR placement → content authority',
@@ -42,6 +45,20 @@ export default function SignalEngineSystem() {
           right: '-180px',
           transform: 'translateY(-50%)',
           opacity: 0.5,
+          zIndex: 0,
+        }}
+      />
+      {/* Violet counter-orb for cross-pillar color depth */}
+      <div
+        className="orb-violet"
+        aria-hidden="true"
+        style={{
+          width: '520px',
+          height: '520px',
+          top: '50%',
+          left: '-160px',
+          transform: 'translateY(-50%)',
+          opacity: 0.14,
           zIndex: 0,
         }}
       />
@@ -130,20 +147,25 @@ export default function SignalEngineSystem() {
             style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px' }}
           >
             <svg
-              viewBox="0 0 360 360"
+              viewBox="0 0 400 380"
               width="100%"
-              style={{ maxWidth: '420px', height: 'auto' }}
+              style={{
+                maxWidth: '480px',
+                height: 'auto',
+                overflow: 'visible',
+                filter: 'drop-shadow(0 0 20px rgba(200,147,74,0.2))',
+              }}
               aria-label="Signal Engine diagram"
               role="img"
             >
               {/* Connecting lines: outer nodes → center */}
-              {PILLARS.map((p, i) => (
+              {PILLARS.map((p) => (
                 <line
                   key={`line-${p.shortLabel}`}
                   x1={p.cx}
                   y1={p.cy}
-                  x2={180}
-                  y2={180}
+                  x2={HUB.cx}
+                  y2={HUB.cy}
                   stroke={p.color}
                   strokeOpacity="0.35"
                   strokeWidth="1.2"
@@ -155,8 +177,8 @@ export default function SignalEngineSystem() {
                   key={`pulse-${p.shortLabel}`}
                   x1={p.cx}
                   y1={p.cy}
-                  x2={180}
-                  y2={180}
+                  x2={HUB.cx}
+                  y2={HUB.cy}
                   stroke={p.color}
                   strokeWidth="2.5"
                   strokeLinecap="round"
@@ -164,18 +186,18 @@ export default function SignalEngineSystem() {
                 />
               ))}
 
-              {/* Outer nodes */}
+              {/* Outer pillar nodes */}
               {PILLARS.map((p) => (
                 <g key={`node-${p.shortLabel}`}>
                   <circle
                     cx={p.cx}
                     cy={p.cy}
-                    r="14"
+                    r={PILLAR_RADIUS + 3}
                     fill="var(--surface-overlay)"
                     stroke={p.color}
                     strokeWidth="1.5"
                   />
-                  <circle cx={p.cx} cy={p.cy} r="4" fill={p.color} />
+                  <circle cx={p.cx} cy={p.cy} r="5" fill={p.color} />
                 </g>
               ))}
 
@@ -196,16 +218,16 @@ export default function SignalEngineSystem() {
                 </text>
               ))}
 
-              {/* Center node */}
+              {/* Center hub node */}
               <g className="signal-node-center">
-                <circle cx="180" cy="180" r="34" fill="var(--surface-overlay)" stroke="var(--gold)" strokeWidth="1.5" />
-                <circle cx="180" cy="180" r="22" fill="rgba(200,147,74,.12)" />
-                <circle cx="180" cy="180" r="8" fill="var(--gold)" />
+                <circle cx={HUB.cx} cy={HUB.cy} r="40" fill="var(--surface-overlay)" stroke="var(--gold)" strokeWidth="1.5" />
+                <circle cx={HUB.cx} cy={HUB.cy} r="26" fill="rgba(200,147,74,.14)" />
+                <circle cx={HUB.cx} cy={HUB.cy} r="11" fill="var(--gold)" />
               </g>
               <text
-                x="180"
-                y="180"
-                dy="55"
+                x={HUB.cx}
+                y={HUB.cy}
+                dy="62"
                 fill="var(--gold)"
                 fontSize="11"
                 fontWeight="700"

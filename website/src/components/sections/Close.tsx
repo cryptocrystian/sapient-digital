@@ -14,17 +14,30 @@ export default function Close() {
         background: 'var(--surface-base)',
       }}
     >
-      {/* Dramatic centered gold orb */}
+      {/* Centered gold orb */}
       <div
         className="orb-gold"
         aria-hidden="true"
         style={{
-          width: '900px',
-          height: '900px',
+          width: '800px',
+          height: '800px',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          opacity: 0.5,
+          opacity: 0.12,
+          zIndex: 0,
+        }}
+      />
+      {/* Offset violet orb for color depth */}
+      <div
+        className="orb-violet"
+        aria-hidden="true"
+        style={{
+          width: '400px',
+          height: '400px',
+          top: '30%',
+          right: '15%',
+          opacity: 0.08,
           zIndex: 0,
         }}
       />

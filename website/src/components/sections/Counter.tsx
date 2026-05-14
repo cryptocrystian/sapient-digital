@@ -2,79 +2,104 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-interface Props {
+interface CounterProps {
   target: number;
-  decimals?: number;
-  suffix?: string;
   prefix?: string;
-  trigger?: 'mount' | 'view';
+  suffix?: string;
+  /** Animation duration in ms (default 2000) */
   duration?: number;
+  /** Number of decimal places (default 0) */
+  decimals?: number;
+  /**
+   * 'view' = fires when the element enters the viewport (default; matches Proof / above-fold stats)
+   * 'mount' = fires immediately on mount (for hero stats already visible)
+   */
+  trigger?: 'view' | 'mount';
 }
 
+/**
+ * Count-up component.
+ *
+ * Style-agnostic: renders only the formatted number string; the caller controls
+ * font, size, and color via a parent wrapper. Pre-animation it renders an
+ * em-dash (—) so SSR markup doesn't show a misleading "0".
+ *
+ * Animation reliability fix (Session 7):
+ * - Use a refs-based animation loop so it never reads stale React state
+ * - Always finalize at exact target value (no rounding drift)
+ * - Reset and restart on the same intersection if hot-reloaded
+ * - IntersectionObserver threshold 0.3 (down from 0.5) — fires earlier so
+ *   stats animate even on a fast scroll past
+ */
 export default function Counter({
   target,
-  decimals = 0,
-  suffix = '',
   prefix = '',
-  trigger = 'mount',
-  duration = 1600,
-}: Props) {
-  const [value, setValue]     = useState(0);
-  const [started, setStarted] = useState(false);
+  suffix = '',
+  duration = 2000,
+  decimals = 0,
+  trigger = 'view',
+}: CounterProps) {
+  const [display, setDisplay] = useState<string>('—');
   const ref = useRef<HTMLSpanElement>(null);
+  const rafRef = useRef<number>(0);
   const startedRef = useRef(false);
 
-  const start = () => {
-    if (startedRef.current) return;
-    startedRef.current = true;
-    setStarted(true);
-    const startTs = performance.now();
-    const animate = (now: number) => {
-      const elapsed = now - startTs;
-      const t = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
-      setValue(target * eased);
-      if (t < 1) requestAnimationFrame(animate);
-      else setValue(target);
-    };
-    requestAnimationFrame(animate);
-  };
-
   useEffect(() => {
+    const fmt = (n: number) => prefix + n.toFixed(decimals) + suffix;
+
+    const start = () => {
+      if (startedRef.current) return;
+      startedRef.current = true;
+
+      const startTs = performance.now();
+
+      const tick = (now: number) => {
+        const elapsed = now - startTs;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setDisplay(fmt(eased * target));
+
+        if (progress < 1) {
+          rafRef.current = requestAnimationFrame(tick);
+        } else {
+          // Snap to exact target — avoids 339.97 type drift
+          setDisplay(fmt(target));
+        }
+      };
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
     if (trigger === 'mount') {
-      start();
-      return;
+      // Fire on next tick so the initial '—' is in the DOM before counting starts
+      const t = setTimeout(start, 16);
+      return () => {
+        clearTimeout(t);
+        cancelAnimationFrame(rafRef.current);
+      };
     }
+
     const el = ref.current;
     if (!el) return;
+
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            start();
-            observer.disconnect();
-          }
-        });
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          start();
+          observer.disconnect();
+        }
       },
-      { threshold: 0.5 },
+      { threshold: 0.3 },
     );
     observer.observe(el);
-    return () => observer.disconnect();
+
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(rafRef.current);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [trigger, target, duration]);
+  }, [target, prefix, suffix, duration, decimals, trigger]);
 
-  // Before animation starts, render an em-dash placeholder instead of "0".
-  const display = !started
-    ? '—'
-    : decimals === 0
-      ? Math.floor(value).toString()
-      : value.toFixed(decimals);
-
-  return (
-    <span ref={ref}>
-      {started && prefix}
-      {display}
-      {started && suffix}
-    </span>
-  );
+  return <span ref={ref}>{display}</span>;
 }

@@ -92,6 +92,9 @@ export default function FourPillars() {
             fontFamily: 'Inter, sans-serif',
             fontWeight: 400,
             letterSpacing: '.01em',
+            display: 'block',
+            maxWidth: '520px',
+            textWrap: 'balance',
           }}
         >
           Plus AI-native video production — built into every retainer.

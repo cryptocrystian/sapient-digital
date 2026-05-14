@@ -1,11 +1,24 @@
 'use client';
 
+import { Suspense, lazy, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import HeroParticles from './HeroParticles';
 import HeroDashboardCard from './HeroDashboardCard';
 import Counter from './Counter';
 import { trackEvent } from '@/lib/analytics';
+
+// 3D Signal Engine graph — heavyweight (Three.js + force-graph). Lazy-loaded so
+// it doesn't bloat the initial Hero bundle, and only rendered on desktop.
+const SignalEngineGraph3D = lazy(
+  () => import('@/components/sections/SignalEngineGraph3D'),
+);
+
+const LABEL_CHIPS = [
+  { label: 'PR',          color: '#C8934A', rgba: '200,147,74' },
+  { label: 'Content',     color: '#7C5CBF', rgba: '124,92,191' },
+  { label: 'AI Presence', color: '#4A9CC8', rgba: '74,156,200' },
+];
 
 const STATS = [
   { value: 340, suffix: '+',  label: 'Tier 1 placements · 2025' },
@@ -14,6 +27,16 @@ const STATS = [
 ];
 
 export default function Hero() {
+  // Mobile detection — 3D graph is heavy on small screens; fall back to the
+  // mock dashboard card under 768px.
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
   return (
     <section
       style={{
@@ -220,12 +243,111 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right column */}
+        {/* Right column — 3D Signal Engine graph on desktop, dashboard card on mobile */}
         <div
           className="fade-up delay-5"
-          style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}
+          style={{
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: isMobile ? 'flex-end' : 'center',
+            minWidth: 0,
+            height: isMobile ? 'auto' : '580px',
+          }}
         >
-          <HeroDashboardCard />
+          {isMobile ? (
+            <HeroDashboardCard />
+          ) : (
+            <>
+              {/* Glow backdrop behind the 3D graph */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background:
+                    'radial-gradient(ellipse at center, rgba(200,147,74,0.08) 0%, transparent 70%)',
+                  pointerEvents: 'none',
+                }}
+              />
+
+              <Suspense
+                fallback={
+                  <div
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      opacity: 0.3,
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 120,
+                        height: 120,
+                        borderRadius: '50%',
+                        border: '1px solid rgba(200,147,74,0.3)',
+                        animation: 'badge-pulse 2s ease-in-out infinite',
+                      }}
+                    />
+                  </div>
+                }
+              >
+                <SignalEngineGraph3D />
+              </Suspense>
+
+              {/* Pillar color-key chips, bottom-center */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: 16,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  display: 'flex',
+                  gap: '8px',
+                  pointerEvents: 'none',
+                  zIndex: 2,
+                }}
+              >
+                {LABEL_CHIPS.map(({ label, color, rgba }) => (
+                  <span
+                    key={label}
+                    style={{
+                      fontSize: '10px',
+                      fontWeight: 700,
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      color,
+                      background: `rgba(${rgba}, 0.1)`,
+                      border: `1px solid ${color}33`,
+                      padding: '3px 8px',
+                      borderRadius: '4px',
+                    }}
+                  >
+                    {label}
+                  </span>
+                ))}
+              </div>
+
+              {/* Drag-to-explore hint */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 12,
+                  right: 12,
+                  fontSize: '10px',
+                  color: 'rgba(255,255,255,0.25)',
+                  letterSpacing: '0.08em',
+                  pointerEvents: 'none',
+                  zIndex: 2,
+                }}
+              >
+                drag to explore
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

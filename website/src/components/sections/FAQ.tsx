@@ -132,9 +132,9 @@ export default function FAQ() {
                 </button>
                 <div
                   style={{
-                    maxHeight: isOpen ? '320px' : '0',
+                    maxHeight: isOpen ? '400px' : '0',
                     overflow: 'hidden',
-                    transition: 'max-height .4s var(--ease-out-expo), opacity .25s ease',
+                    transition: 'max-height .35s cubic-bezier(0.4, 0, 0.2, 1), opacity .25s ease',
                     opacity: isOpen ? 1 : 0,
                   }}
                 >
