@@ -1,17 +1,44 @@
 'use client';
 
-import { Suspense, lazy, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { ArrowRight } from 'lucide-react';
 import HeroParticles from './HeroParticles';
 import HeroDashboardCard from './HeroDashboardCard';
 import Counter from './Counter';
 import { trackEvent } from '@/lib/analytics';
 
-// 3D Signal Engine graph — heavyweight (Three.js + force-graph). Lazy-loaded so
-// it doesn't bloat the initial Hero bundle, and only rendered on desktop.
-const SignalEngineGraph3D = lazy(
+// 3D Signal Engine graph — heavyweight (Three.js + force-graph). next/dynamic
+// with ssr:false means the module is never imported on the server; Three.js
+// touches window on import, so SSR would crash. Loaded client-only, on demand.
+const SignalEngineGraph3D = dynamic(
   () => import('@/components/sections/SignalEngineGraph3D'),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          opacity: 0.3,
+        }}
+      >
+        <div
+          style={{
+            width: 120,
+            height: 120,
+            borderRadius: '50%',
+            border: '1px solid rgba(200,147,74,0.3)',
+            animation: 'badge-pulse 2s ease-in-out infinite',
+          }}
+        />
+      </div>
+    ),
+  },
 );
 
 const LABEL_CHIPS = [
@@ -271,32 +298,9 @@ export default function Hero() {
                 }}
               />
 
-              <Suspense
-                fallback={
-                  <div
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      opacity: 0.3,
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: 120,
-                        height: 120,
-                        borderRadius: '50%',
-                        border: '1px solid rgba(200,147,74,0.3)',
-                        animation: 'badge-pulse 2s ease-in-out infinite',
-                      }}
-                    />
-                  </div>
-                }
-              >
-                <SignalEngineGraph3D />
-              </Suspense>
+              {/* next/dynamic above provides its own loading state via the
+                  `loading:` prop, so no Suspense wrapper is needed here. */}
+              <SignalEngineGraph3D />
 
               {/* Pillar color-key chips, bottom-center */}
               <div

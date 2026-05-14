@@ -3,7 +3,7 @@
 const ITEMS = [
   'PR & Media Relations',
   'Content & Thought Leadership',
-  'Search & AI Visibility',
+  'AI Presence & AEO',
   'Video Production',
   'Executive Positioning',
   'Brand Authority',
