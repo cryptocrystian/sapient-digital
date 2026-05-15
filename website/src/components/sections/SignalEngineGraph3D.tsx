@@ -2,6 +2,13 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useRef } from 'react';
+import ForceGraph3DLib from 'react-force-graph-3d';
+import * as THREE from 'three';
+
+// The package's public TS types describe the JSX wrapper component, but we use
+// the function/vanilla form (factory → instance → chainable methods). Cast to
+// any so the chainable API typechecks.
+const ForceGraph3D = ForceGraph3DLib as any;
 
 // ── Graph data: Signal Engine knowledge graph ─────────────────────────
 const GRAPH_DATA = {
@@ -94,17 +101,12 @@ export default function SignalEngineGraph3D() {
   const containerRef = useRef<HTMLDivElement>(null);
   const graphRef = useRef<any>(null);
 
-  const initGraph = useCallback(async () => {
+  const initGraph = useCallback(() => {
     if (!containerRef.current || graphRef.current) return;
 
-    // Defer Three.js + ForceGraph3D until client runtime — these libs touch
-    // window/document on import, so they'd break SSR if hoisted.
-    //
-    // The package's public TS types describe the JSX wrapper component, but we
-    // use the function/vanilla form (factory → instance → chainable methods).
-    // Casting to `any` is the documented way to access the vanilla API.
-    const ForceGraph3D = (await import('react-force-graph-3d')).default as any;
-    const THREE = await import('three');
+    // Three.js + react-force-graph-3d are statically imported at the top of
+    // this file. Safe because the whole component is only ever mounted on the
+    // client (Hero loads it via next/dynamic with ssr:false).
 
     const container = containerRef.current;
     const width = container.clientWidth || 600;
@@ -235,8 +237,8 @@ export default function SignalEngineGraph3D() {
   useEffect(() => {
     let cleanup: (() => void) | undefined;
     // Tiny delay so the parent's layout has settled before we read clientWidth/Height
-    const t = setTimeout(async () => {
-      cleanup = (await initGraph()) ?? undefined;
+    const t = setTimeout(() => {
+      cleanup = initGraph() ?? undefined;
     }, 100);
     return () => {
       clearTimeout(t);
