@@ -2,13 +2,18 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useRef } from 'react';
-import ForceGraph3DLib from 'react-force-graph-3d';
+// IMPORTANT: import from `3d-force-graph` (the vanilla factory), NOT from
+// `react-force-graph-3d` (whose default export is a React component, which is
+// not callable as a function — that's the `o is not a function` runtime crash
+// we shipped on the previous deploy). The factory supports the chainable
+// instance API we use below: ForceGraph3D({...opts})(container).method(...).
+import ForceGraph3DFactory from '3d-force-graph';
 import * as THREE from 'three';
 
-// The package's public TS types describe the JSX wrapper component, but we use
-// the function/vanilla form (factory → instance → chainable methods). Cast to
-// any so the chainable API typechecks.
-const ForceGraph3D = ForceGraph3DLib as any;
+// 3d-force-graph's TS types are accurate but the chainable instance type is
+// non-trivial to express. Cast to any so chained method calls typecheck. Use
+// the alias `ForceGraph3D` below so the rest of the file reads naturally.
+const ForceGraph3D = ForceGraph3DFactory as any;
 
 // ── Graph data: Signal Engine knowledge graph ─────────────────────────
 const GRAPH_DATA = {
