@@ -41,11 +41,6 @@ const SignalEngineGraph3D = dynamic(
   },
 );
 
-const LABEL_CHIPS = [
-  { label: 'PR',          color: '#C8934A', rgba: '200,147,74' },
-  { label: 'Content',     color: '#7C5CBF', rgba: '124,92,191' },
-  { label: 'AI Presence', color: '#4A9CC8', rgba: '74,156,200' },
-];
 
 const STATS = [
   { value: 340, suffix: '+',  label: 'Tier 1 placements · 2025' },
@@ -285,72 +280,12 @@ export default function Hero() {
           {isMobile ? (
             <HeroDashboardCard />
           ) : (
-            <>
-              {/* Glow backdrop behind the 3D graph */}
-              <div
-                aria-hidden="true"
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background:
-                    'radial-gradient(ellipse at center, rgba(200,147,74,0.08) 0%, transparent 70%)',
-                  pointerEvents: 'none',
-                }}
-              />
-
-              {/* next/dynamic above provides its own loading state via the
-                  `loading:` prop, so no Suspense wrapper is needed here. */}
+            // The 3D graph is fully self-contained — owns its own dark card
+            // background, glow, chips, drag hint, and tooltip. No outer
+            // wrapper UI needed.
+            <div style={{ width: '100%' }}>
               <SignalEngineGraph3D />
-
-              {/* Pillar color-key chips, bottom-center */}
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: 16,
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  display: 'flex',
-                  gap: '8px',
-                  pointerEvents: 'none',
-                  zIndex: 2,
-                }}
-              >
-                {LABEL_CHIPS.map(({ label, color, rgba }) => (
-                  <span
-                    key={label}
-                    style={{
-                      fontSize: '10px',
-                      fontWeight: 700,
-                      letterSpacing: '0.1em',
-                      textTransform: 'uppercase',
-                      color,
-                      background: `rgba(${rgba}, 0.1)`,
-                      border: `1px solid ${color}33`,
-                      padding: '3px 8px',
-                      borderRadius: '4px',
-                    }}
-                  >
-                    {label}
-                  </span>
-                ))}
-              </div>
-
-              {/* Drag-to-explore hint */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: 12,
-                  right: 12,
-                  fontSize: '10px',
-                  color: 'rgba(255,255,255,0.25)',
-                  letterSpacing: '0.08em',
-                  pointerEvents: 'none',
-                  zIndex: 2,
-                }}
-              >
-                drag to explore
-              </div>
-            </>
+            </div>
           )}
         </div>
       </div>
