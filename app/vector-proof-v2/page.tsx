@@ -73,11 +73,38 @@ export default function BuyerFirstHeroStudy() {
         <div className={styles.nextDivider}><span>THE BUYER'S STORY CONTINUES HERE</span><span>VECTOR LOCK IS THE METHOD — NOT THE OFFER</span></div>
       </section>
 
+
+<section className={styles.fullSection} id="services" aria-labelledby="services-heading">
+  <div className={styles.fullEyebrow}>02 / OUR EXPERTISE</div>
+  <div className={styles.fullTitle}><h2 id="services-heading">Make your expertise <em>matter in market.</em></h2><p>Our work connects the three disciplines that make B2B brands known, credible and discoverable. Not isolated tactics. One coordinated marketing engagement.</p></div>
+  <div className={styles.fullServices}>
+    <article><span>01 / EARNED</span><h3>Digital PR</h3><p>Relevant stories, meaningful media relationships and independent recognition that strengthen credibility.</p></article>
+    <article><span>02 / OWNED</span><h3>Strategic Content</h3><p>Thought leadership and substantive editorial work that turns expertise into ideas buyers remember.</p></article>
+    <article><span>03 / DISCOVERED</span><h3>Search &amp; AI Visibility</h3><p>Authority-focused visibility across traditional search and the AI-assisted research journey.</p></article>
+  </div>
+  <p className={styles.fullNote}>Video and multimedia production can extend the program when the story calls for it—always separately scoped.</p>
+</section>
+<section className={styles.fullDark} id="vector-lock" aria-labelledby="method-heading">
+  <div className={styles.fullEyebrow}>03 / THE DIFFERENCE</div>
+  <div className={styles.fullTitle}><h2 id="method-heading">Less friction.<br/><em>More momentum.</em></h2><p>Great PR, content and search do more when they reinforce one another. Vector Lock is our integrated method for setting shared direction, coordinating the work, and adapting when markets change. It's how we deliver—not a product you need to manage.</p></div>
+  <div className={styles.fullVector} aria-hidden="true"><span>DIGITAL PR</span><span>STRATEGIC CONTENT</span><span>SEARCH VISIBILITY</span><strong>↗</strong></div>
+</section>
+<section className={styles.fullSection} id="mission-control" aria-labelledby="team-heading">
+  <div className={styles.fullEyebrow}>04 / THE INTELLIGENCE BEHIND THE WORK</div>
+  <div className={styles.fullTitle}><h2 id="team-heading">Experienced judgment.<br/><em>Better informed.</em></h2><p>Our team combines communications expertise with proprietary intelligence and orchestration tools to spot opportunities, coordinate execution, and measure what can be verified. We call that support layer Mission Control. It stays behind the scenes. Our people remain accountable for the work.</p></div>
+  <div className={styles.fullAttributes}><span>MARKET INTELLIGENCE</span><span>EDITORIAL QUALITY</span><span>COORDINATED DELIVERY</span><span>HUMAN APPROVAL</span></div>
+</section>
+<section className={styles.fullProof} id="evidence" aria-labelledby="evidence-heading">
+  <div className={styles.fullEyebrow}>05 / REASONS TO BELIEVE</div>
+  <div className={styles.fullTitle}><h2 id="evidence-heading">Substance before <em>spin.</em></h2><p>We don't promise press placements, rankings, AI citations or revenue outcomes we cannot control. We make our strategic thinking visible, document what we do, and report evidence honestly. Verified client work will appear here when available and authorized.</p></div>
+  <a href="#contact">Discuss your business challenge ↗</a>
+</section>
+
       <section className={styles.contact} id="contact" aria-labelledby="contact-title">
         <p>THE NEXT CONVERSATION</p>
         <h2 id="contact-title">Let's build the recognition you've earned.</h2>
         <a href="mailto:hello@sapientdigital.io?subject=Let's%20talk%20strategy">Start a conversation ↗</a>
-        <small>Concept study only. Hero and adjacent transition are the current approval scope.</small>
+        <small>Private preview: content and design under creative review.</small>
       </section>
     </main>
   );
