@@ -45,17 +45,17 @@ export function Friction() {
           </h2>
           <p className="vl-friction-lead">
             When PR, content, and search are run by different firms on
-            different calendars, the work doesn't just stay separate — it
+            different calendars, the work doesn&apos;t just stay separate — it
             fights itself. Press hits land outside content moments. Content
             publishes without the search surfaces primed. Search optimizes
-            for yesterday's narrative. Every pillar burns calories undoing
+            for yesterday&apos;s narrative. Every pillar burns calories undoing
             the others.
           </p>
           <p className="vl-friction-body">
             The cost is not visible on any one invoice. It shows up as a flat
-            visibility curve, press coverage that doesn't move pipeline, and
+            visibility curve, press coverage that doesn&apos;t move pipeline, and
             quarterly reviews where no one can explain why the number stayed
-            where it was. Drag is not a vendor problem; it's a topology
+            where it was. Drag is not a vendor problem; it&apos;s a topology
             problem.
           </p>
         </div>

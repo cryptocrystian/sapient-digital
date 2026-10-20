@@ -27,7 +27,7 @@ export default function AboutPage() {
           A small firm. Four pillars, one voice.
         </h1>
         <p className="lead" style={{ marginTop: 32, maxWidth: "48ch", color: "var(--body)" }}>
-          Sapient Digital is the agency arm of Saipien Labs. We unify press, expert content, SEO + AEO, and video through a proprietary orchestration layer called PrismOS — so our clients' brand voice stays one voice across every surface the market reads.
+          Sapient Digital is the agency arm of Saipien Labs. We unify press, expert content, SEO + AEO, and video through a proprietary orchestration layer called PrismOS — so our clients&apos; brand voice stays one voice across every surface the market reads.
         </p>
         <div style={{ marginTop: 40, display: "flex", gap: 14, flexWrap: "wrap" }}>
           <Link href="/#start" className="btn btn-primary">Book a Prism Audit</Link>

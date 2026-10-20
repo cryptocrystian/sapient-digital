@@ -9,7 +9,7 @@ export function MissionControl() {
         <header className="vl-mc-header">
           <p className="vl-mc-eyebrow">
             <span className="vl-mc-eye-key">Sapient · Mission Control</span>
-            <span className="vl-mc-sep">//</span>
+            <span className="vl-mc-sep">{"//"}</span>
             <span className="vl-mc-live">
               <span className="vl-mc-live-dot" aria-hidden="true" />
               The operating layer
@@ -64,7 +64,7 @@ export function MissionControl() {
             <h3 className="vl-mc-proof-title">Partner-led governance</h3>
             <p className="vl-mc-proof-body">
               Nothing reputation-sensitive leaves the queue without a named
-              partner's sign-off. The HUD shows the queue; a human calls the
+              partner&apos;s sign-off. The HUD shows the queue; a human calls the
               shot.
             </p>
           </article>

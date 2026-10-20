@@ -64,7 +64,7 @@ export function VectorLockHero() {
         <div className="vl-hero-copy">
           <p className="vl-eyebrow">
             <span className="vl-eyebrow-platform">Platform · Vector Lock</span>
-            <span className="vl-eyebrow-sep">//</span>
+            <span className="vl-eyebrow-sep">{"//"}</span>
             <span className="vl-eyebrow-live">
               <span className="vl-live-dot" aria-hidden="true" />
               Live Signal · T−00:04
