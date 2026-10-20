@@ -1,55 +1,58 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: ["class"],
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
-    "./content/**/*.{md,mdx}"
+    "./content/**/*.{md,mdx}",
   ],
   theme: {
     extend: {
       colors: {
-        bg: {
-          900: "var(--sd-bg-900)",
-          800: "var(--sd-bg-800)",
-          700: "var(--sd-bg-700)"
-        },
-        fg: {
-          100: "var(--sd-fg-100)",
-          300: "var(--sd-fg-300)",
-          500: "var(--sd-fg-500)"
-        },
-        accent: {
-          500: "var(--sd-accent-500)",
-          400: "var(--sd-accent-400)"
-        },
-        gold: {
-          400: "var(--sd-gold-400)"
-        },
-        line: {
-          700: "var(--sd-line-700)",
-          600: "var(--sd-line-600)"
-        },
-        state: {
-          danger: "var(--sd-danger-500)",
-          info: "var(--sd-info-400)",
-          warn: "var(--sd-warn-400)"
-        }
+        canvas:     "var(--canvas)",
+        paper:      "var(--paper)",
+        ink:        "var(--ink)",
+        body:       "var(--body)",
+        muted:      "var(--muted)",
+        rule:       "var(--rule)",
+        forest:     "var(--forest)",
+        signal:     "var(--signal)",
+        "signal-dim": "var(--signal-dim)",
+        spark:      "var(--spark)",
+        "spark-ink": "var(--spark-ink)",
+      },
+      fontFamily: {
+        display: ["var(--font-display)", "Didot", "Georgia", "serif"],
+        sans:    ["var(--font-sans)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "system-ui", "sans-serif"],
+        mono:    ["var(--font-mono)", "ui-monospace", "SF Mono", "Menlo", "monospace"],
       },
       borderRadius: {
-        sm: "10px",
-        md: "14px",
-        lg: "20px",
-        xl: "28px"
+        none: "0",
+        sm: "2px",
+        DEFAULT: "4px",
+        md: "6px",
+        lg: "10px",
       },
-      boxShadow: {
-        card: "0 10px 30px rgba(0,0,0,.25)"
+      letterSpacing: {
+        tightest: "-0.045em",
+        tighter: "-0.03em",
+        tight: "-0.02em",
+        normal: "0",
+        wide: "0.04em",
+        wider: "0.08em",
+        widest: "0.14em",
       },
       transitionTimingFunction: {
-        sapient: "cubic-bezier(.2,.8,.2,1)"
-      }
-    }
+        sapient: "cubic-bezier(.2,.6,.2,1)",
+      },
+      maxWidth: {
+        "measure": "68ch",
+        "wrap": "1340px",
+      },
+      animation: {
+        marquee: "marquee 42s linear infinite",
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography")],
 };

@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "sapient-dev",
+      "runtimeExecutable": "wsl.exe",
+      "runtimeArgs": [
+        "-d",
+        "Ubuntu",
+        "bash",
+        "-lc",
+        "cd /home/saipienlabs/projects/sapient-digital && npm run dev"
+      ],
+      "port": 3000
+    }
+  ]
+}
