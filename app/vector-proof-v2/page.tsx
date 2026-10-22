@@ -17,11 +17,11 @@ export default function BuyerFirstHeroStudy() {
       <header className={styles.header}>
         <a className={styles.brandLink} href="#top" aria-label="Sapient Digital, back to top"><Mark /></a>
         <nav className={styles.nav} aria-label="Primary navigation">
-          <a href="#services">Services</a>
-          <a href="#resultant">Our approach</a>
-          <a href="#engagements">Work with us</a>
+          <a href="/resultant-preview/services">Services</a>
+          <a href="/resultant-preview/approach">Our approach</a>
+          <a href="/resultant-preview/contact">Work with us</a>
         </nav>
-        <a className={styles.topCta} href="#engagements">Work with us <span aria-hidden="true">↗</span></a>
+        <a className={styles.topCta} href="/resultant-preview/contact">Work with us <span aria-hidden="true">↗</span></a>
       </header>
 
       <section className={styles.hero} aria-labelledby="hero-title">
@@ -39,7 +39,7 @@ export default function BuyerFirstHeroStudy() {
             <h2>Become the brand your market <em>recognizes, trusts, and finds.</em></h2>
             <p>Sapient Digital is a B2B marketing agency connecting digital PR, strategic content, and search visibility. We help ambitious companies turn expertise into earned authority and lasting market presence.</p>
             <div className={styles.actions}>
-              <a className={styles.primary} href="#resultant">Explore our approach <span aria-hidden="true">↗</span></a>
+              <a className={styles.primary} href="/resultant-preview/approach">Explore our approach <span aria-hidden="true">↗</span></a>
               <a className={styles.secondary} href="/audit">Free Visibility Audit <span aria-hidden="true">↗</span></a>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function BuyerFirstHeroStudy() {
 <section className={styles.fullProof} id="evidence" aria-labelledby="evidence-heading">
   <div className={styles.fullEyebrow}>05 / REASONS TO BELIEVE</div>
   <div className={styles.fullTitle}><h2 id="evidence-heading">Accountability you can <em>understand.</em></h2><p>Every engagement begins with agreed objectives and a documented baseline. We report what we committed to, what we delivered, what changed, and what the evidence supports. PR tracks verified recognition and relevant coverage; Content tracks editorial delivery, quality and engagement; Search tracks discoverability and sampled AI-answer presence. Integrated programs also review cross-practice progress and emerging opportunities.</p></div>
-  <a href="#engagements">Explore engagement options ↗</a>
+  <a href="/resultant-preview/services">Explore engagement options ↗</a>
 </section>
 
 
@@ -108,8 +108,8 @@ export default function BuyerFirstHeroStudy() {
     <p>You don't have to replace every marketing partner to benefit from a better approach. Start with the specialized expertise you need now or bring PR, content, and search into a coordinated authority program. Either way, our standards and strategic direction remain consistent.</p>
   </div>
   <div className={styles.fullServices}>
-    <article><span>OPTION / 01</span><h3>Focused Engagement</h3><p>Dedicated delivery in PR, content, or search visibility, with clear practice-specific priorities, deliverables, and reporting. We collaborate with your existing partners where agreed.</p><a href="#contact">Discuss a focused need ↗</a></article>
-    <article><span>OPTION / 02</span><h3>Integrated Authority Program</h3><p>One coordinated strategy spanning earned recognition, thought leadership, and discoverability, supported by shared intelligence and cross-practice measurement.</p><a href="#contact">Discuss an integrated program ↗</a></article>
+    <article><span>OPTION / 01</span><h3>Focused Engagement</h3><p>Dedicated delivery in PR, content, or search visibility, with clear practice-specific priorities, deliverables, and reporting. We collaborate with your existing partners where agreed.</p><a href="/resultant-preview/contact">Discuss a focused need ↗</a></article>
+    <article><span>OPTION / 02</span><h3>Integrated Authority Program</h3><p>One coordinated strategy spanning earned recognition, thought leadership, and discoverability, supported by shared intelligence and cross-practice measurement.</p><a href="/resultant-preview/contact">Discuss an integrated program ↗</a></article>
     <article><span>START WITH INSIGHT</span><h3>Explore Before You Engage</h3><p>Get to know how we think, explore our point of view, or use our Free Visibility Audit as one possible starting point. No meeting required to begin learning.</p><a href="/audit">Explore the audit ↗</a></article>
   </div>
 </section>
