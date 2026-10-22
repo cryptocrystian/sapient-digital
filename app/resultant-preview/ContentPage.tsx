@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./content.module.css";
+import ContactForm from "./ContactForm";
 
 export type ContentPage = "services" | "approach" | "pr" | "content" | "search" | "resources" | "contact";
 type Block = { title:string; text:string };
@@ -22,6 +23,7 @@ return <main className={styles.shell}>
 <section className={styles.body}><div className={styles.bodyTop}><span>OUR APPROACH / THE DETAILS</span><span>↓</span></div><div className={styles.rows}>{p.blocks.map((b,i)=><article key={b.title} className={styles.row}><span>{String(i+1).padStart(2,"0")}</span><h3>{b.title}</h3><p>{b.text}</p></article>)}</div></section>
 {kind==="services"&&<section className={styles.links}><h2>Explore the practices</h2><div><Link href={route.pr}>Digital PR ↗</Link><Link href={route.content}>Strategic Content ↗</Link><Link href={route.search}>Search & AI Visibility ↗</Link></div></section>}
 {kind==="approach"&&<section className={styles.dark}><p>MISSION CONTROL / THE SYSTEM BEHIND THE WORK</p><h2>Human judgment.<br/>Operational intelligence.</h2><div>Mission Control combines specialist workflows, intelligence, approvals, progress tracking and review. Each practice operates independently; integrated engagements add cross-practice coordination. It is how we deliver managed services—not software you need to operate.</div></section>}
+{kind==="contact"&&<ContactForm/>}
 <section className={styles.closer}><p>{p.proof}</p><Link href={href}>{p.cta} <span>↗</span></Link></section>
 <footer className={styles.footer}><span>CONNECTED MARKETING. AMPLIFIED IMPACT.</span><Link href="/resultant-preview">Back to homepage ↗</Link></footer>
 </main>;}
