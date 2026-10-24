@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import styles from "./hero-v2.module.css";
 
 export const metadata: Metadata = {
-  title: "Sapient Digital — Buyer-first hero study",
-  description: "Creative study: an authority and visibility marketing agency, not a software product.",
+  title: "Sapient Digital — Resultant Framework concept",
+  description: "B2B digital PR, strategic content, and search visibility. Connected marketing. Amplified impact.",
   robots: { index: false, follow: false },
 };
 
@@ -17,11 +17,11 @@ export default function BuyerFirstHeroStudy() {
       <header className={styles.header}>
         <a className={styles.brandLink} href="#top" aria-label="Sapient Digital, back to top"><Mark /></a>
         <nav className={styles.nav} aria-label="Primary navigation">
-          <a href="#capabilities">What we do</a>
-          <a href="#approach">Our approach</a>
-          <a href="#contact">Let's talk</a>
+          <a href="/resultant-preview/services">Services</a>
+          <a href="/resultant-preview/approach">Our approach</a>
+          <a href="/resultant-preview/contact">Work with us</a>
         </nav>
-        <a className={styles.topCta} href="#contact">Talk strategy <span aria-hidden="true">↗</span></a>
+        <a className={styles.topCta} href="/resultant-preview/contact">Work with us <span aria-hidden="true">↗</span></a>
       </header>
 
       <section className={styles.hero} aria-labelledby="hero-title">
@@ -36,11 +36,11 @@ export default function BuyerFirstHeroStudy() {
 
         <div className={styles.lower}>
           <div className={styles.pitch}>
-            <h2>We build the authority B2B brands need to be <em>discovered, recognized, and trusted.</em></h2>
-            <p>Sapient Digital connects digital PR, strategic content, and search visibility into one coordinated marketing program—built to strengthen how your market sees you.</p>
+            <h2>Become the brand your market <em>recognizes, trusts, and finds.</em></h2>
+            <p>Sapient Digital is a B2B marketing agency connecting digital PR, strategic content, and search visibility. We help ambitious companies turn expertise into earned authority and lasting market presence.</p>
             <div className={styles.actions}>
-              <a className={styles.primary} href="#contact">Talk strategy <span aria-hidden="true">↗</span></a>
-              <a className={styles.secondary} href="#approach">Explore our approach <span aria-hidden="true">↗</span></a>
+              <a className={styles.primary} href="/resultant-preview/approach">Explore our approach <span aria-hidden="true">↗</span></a>
+              <a className={styles.secondary} href="/audit">Free Visibility Audit <span aria-hidden="true">↗</span></a>
             </div>
           </div>
 
@@ -68,9 +68,9 @@ export default function BuyerFirstHeroStudy() {
 
       <section className={styles.next} id="approach" aria-labelledby="approach-title">
         <div className={styles.sectionTag}><span>01 / THE CHALLENGE</span><span>↓</span></div>
-        <h2 id="approach-title">The right audience can't trust what it <em>never discovers.</em></h2>
-        <p>Your expertise deserves more than isolated campaigns and fleeting attention. We connect the disciplines that make your business visible, credible, and worth remembering.</p>
-        <div className={styles.nextDivider}><span>THE BUYER'S STORY CONTINUES HERE</span><span>VECTOR LOCK IS THE METHOD — NOT THE OFFER</span></div>
+        <h2 id="approach-title">Attention is everywhere. <em>Authority is scarce.</em></h2>
+        <p>Your buyers form opinions across publications, search engines, AI-assisted research, and trusted conversations. Every encounter contributes to what they believe about your company. Authority is built when credible expertise is consistently discovered, recognized, and understood.</p>
+        <div className={styles.nextDivider}><span>INDEPENDENT CREDIBILITY. CONNECTED PRESENCE.</span><span>FRAGMENTATION CREATES DRAG. ALIGNMENT CREATES FORCE.</span></div>
       </section>
 
 
@@ -84,22 +84,35 @@ export default function BuyerFirstHeroStudy() {
   </div>
   <p className={styles.fullNote}>Video and multimedia production can extend the program when the story calls for it—always separately scoped.</p>
 </section>
-<section className={styles.fullDark} id="vector-lock" aria-labelledby="method-heading">
+<section className={styles.fullDark} id="resultant" aria-labelledby="method-heading">
   <div className={styles.fullEyebrow}>03 / THE DIFFERENCE</div>
-  <div className={styles.fullTitle}><h2 id="method-heading">Less friction.<br/><em>More momentum.</em></h2><p>Great PR, content and search do more when they reinforce one another. Vector Lock is our integrated method for setting shared direction, coordinating the work, and adapting when markets change. It's how we deliver—not a product you need to manage.</p></div>
+  <div className={styles.fullTitle}><h2 id="method-heading">Fragmentation creates drag.<br/><em>Alignment creates force.</em></h2><p><strong>The Resultant Framework™</strong> is our signature methodology. In physics, a resultant expresses the combined effect of multiple forces. We apply that idea to marketing: establish direction, read the market, coordinate specialist execution, measure the impact, and adapt. Each practice delivers independent value; together, the work can reinforce a more credible, discoverable market presence.</p></div>
   <div className={styles.fullVector} aria-hidden="true"><span>DIGITAL PR</span><span>STRATEGIC CONTENT</span><span>SEARCH VISIBILITY</span><strong>↗</strong></div>
 </section>
 <section className={styles.fullSection} id="mission-control" aria-labelledby="team-heading">
   <div className={styles.fullEyebrow}>04 / THE INTELLIGENCE BEHIND THE WORK</div>
-  <div className={styles.fullTitle}><h2 id="team-heading">Experienced judgment.<br/><em>Better informed.</em></h2><p>Our team combines communications expertise with proprietary intelligence and orchestration tools to spot opportunities, coordinate execution, and measure what can be verified. We call that support layer Mission Control. It stays behind the scenes. Our people remain accountable for the work.</p></div>
+  <div className={styles.fullTitle}><h2 id="team-heading">Expert-led delivery.<br/><em>Powered by Mission Control.</em></h2><p>Mission Control is the operating system behind our managed engagements—not a product clients must learn. Our specialists use market and media intelligence, practice-specific workflows, human editorial approvals, and performance reviews to prioritize and deliver work. For integrated programs, shared orchestration connects opportunities and dependencies across practices. For focused programs, each practice operates on its own accountable scorecard.</p></div>
   <div className={styles.fullAttributes}><span>MARKET INTELLIGENCE</span><span>EDITORIAL QUALITY</span><span>COORDINATED DELIVERY</span><span>HUMAN APPROVAL</span></div>
 </section>
 <section className={styles.fullProof} id="evidence" aria-labelledby="evidence-heading">
   <div className={styles.fullEyebrow}>05 / REASONS TO BELIEVE</div>
-  <div className={styles.fullTitle}><h2 id="evidence-heading">Substance before <em>spin.</em></h2><p>We don't promise press placements, rankings, AI citations or revenue outcomes we cannot control. We make our strategic thinking visible, document what we do, and report evidence honestly. Verified client work will appear here when available and authorized.</p></div>
-  <a href="#contact">Discuss your business challenge ↗</a>
+  <div className={styles.fullTitle}><h2 id="evidence-heading">Accountability you can <em>understand.</em></h2><p>Every engagement begins with agreed objectives and a documented baseline. We report what we committed to, what we delivered, what changed, and what the evidence supports. PR tracks verified recognition and relevant coverage; Content tracks editorial delivery, quality and engagement; Search tracks discoverability and sampled AI-answer presence. Integrated programs also review cross-practice progress and emerging opportunities.</p></div>
+  <a href="/resultant-preview/services">Explore engagement options ↗</a>
 </section>
 
+
+<section className={styles.fullSection} id="engagements" aria-labelledby="engagements-title">
+  <div className={styles.fullEyebrow}>06 / WORK WITH US</div>
+  <div className={styles.fullTitle}>
+    <h2 id="engagements-title">Built to work together. <em>Available where you need us.</em></h2>
+    <p>You don't have to replace every marketing partner to benefit from a better approach. Start with the specialized expertise you need now or bring PR, content, and search into a coordinated authority program. Either way, our standards and strategic direction remain consistent.</p>
+  </div>
+  <div className={styles.fullServices}>
+    <article><span>OPTION / 01</span><h3>Focused Engagement</h3><p>Dedicated delivery in PR, content, or search visibility, with clear practice-specific priorities, deliverables, and reporting. We collaborate with your existing partners where agreed.</p><a href="/resultant-preview/contact">Discuss a focused need ↗</a></article>
+    <article><span>OPTION / 02</span><h3>Integrated Authority Program</h3><p>One coordinated strategy spanning earned recognition, thought leadership, and discoverability, supported by shared intelligence and cross-practice measurement.</p><a href="/resultant-preview/contact">Discuss an integrated program ↗</a></article>
+    <article><span>START WITH INSIGHT</span><h3>Explore Before You Engage</h3><p>Get to know how we think, explore our point of view, or use our Free Visibility Audit as one possible starting point. No meeting required to begin learning.</p><a href="/audit">Explore the audit ↗</a></article>
+  </div>
+</section>
       <section className={styles.contact} id="contact" aria-labelledby="contact-title">
         <p>THE NEXT CONVERSATION</p>
         <h2 id="contact-title">Let's build the recognition you've earned.</h2>
