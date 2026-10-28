@@ -103,7 +103,8 @@
 .resultant-root .rs-page {
   padding-left:  max(16px, env(safe-area-inset-left,  0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
-  max-width: 1440px;
+  width: 100%;
+  max-width: min(96vw, 1760px);
   margin: 0 auto;
 }
 
