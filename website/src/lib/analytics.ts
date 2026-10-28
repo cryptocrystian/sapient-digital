@@ -28,3 +28,18 @@ export function track(event: string, params: TrackParams = {}): void {
 export function trackPageView(path: string): void {
   track('page_view', { page_path: path });
 }
+
+// Backward-compat shim: legacy Signal Engine components call
+// trackEvent({ event, ...params }) — a single-object signature.
+export type EventName = string;
+
+export function trackEvent(payload: { event: EventName } & Record<string, unknown>): void {
+  const { event, ...rest } = payload;
+  const params: TrackParams = {};
+  for (const [k, v] of Object.entries(rest)) {
+    if (typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean') {
+      params[k] = v;
+    }
+  }
+  track(event, params);
+}
