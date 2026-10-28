@@ -4,25 +4,34 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Services — Sapient Digital",
-  description: "Integrated PR, content marketing, and technical SEO services.",
+  description: "Four pillars kept in phase. One orchestration layer.",
 };
 
 export default function ServicesPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen pt-32 px-8">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-5xl font-bold font-[family-name:var(--font-inter-tight)] mb-6">
-            Services
-          </h1>
-          <p className="text-xl text-fg-300 max-w-3xl">
-            Detailed services page coming soon. For now, visit our{" "}
-            <Link href="/#services" className="text-accent-400 hover:underline">
-              home page
-            </Link>{" "}
-            to learn about our integrated PR, content, and SEO offerings.
-          </p>
+      <main className="container-wide" style={{ paddingTop: 72, paddingBottom: 96 }}>
+        <h1
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(44px, 7vw, 96px)",
+            lineHeight: 0.98,
+            letterSpacing: "-0.038em",
+            color: "var(--ink)",
+            margin: 0,
+            maxWidth: "18ch",
+            fontWeight: 700,
+          }}
+        >
+          Four pillars, kept in <span className="text-beam">phase</span>.
+        </h1>
+        <p className="lead" style={{ marginTop: 32, maxWidth: "52ch", color: "var(--body)" }}>
+          PR, expert content, SEO + AEO, and video — unified through PrismOS and measured across every surface. See the full four-wavelength breakdown on the home page.
+        </p>
+        <div style={{ marginTop: 40, display: "flex", gap: 14, flexWrap: "wrap" }}>
+          <Link href="/#wavelengths" className="btn btn-primary">See the four wavelengths</Link>
+          <Link href="/#start" className="btn btn-ghost">Book a Prism Audit</Link>
         </div>
       </main>
       <Footer />

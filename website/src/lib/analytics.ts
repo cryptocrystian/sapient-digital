@@ -1,36 +1,30 @@
 /**
- * Typed wrapper for GTM dataLayer events.
+ * Analytics event helper — pushes to window.dataLayer, which GTM + GA4
+ * both consume. Decoupled from any single platform; adding another
+ * analytics tool later means configuring a GTM tag, not changing this code.
  *
- * Usage:
- *   trackEvent({ event: 'cta_click', label: 'pricing_cta', tier: 'establish' });
- *   trackEvent({ event: 'lp_view', source: 'lp-ai-presence' });
- *
- * Safe to call from anywhere — guards against SSR + missing dataLayer.
+ * Event vocabulary (keep stable — GTM tags depend on these names):
+ *   - page_view          { page_path }
+ *   - cta_click          { cta_name, cta_location, cta_discipline?, insight_slug? }
+ *   - form_submit        { form, form_entry_path? }
+ *   - scorecard_result   { band, score, entry_path }
+ *   - scroll_depth       { percent, page_path }
+ *   - chapter_view       { chapter, page_path }
  */
 
-export type EventName =
-  | 'cta_click'
-  | 'form_submit'
-  | 'lp_view'
-  | 'audit_start'
-  | 'pricing_view';
+export type TrackParams = Record<string, string | number | boolean>;
 
-export interface TrackEventProps {
-  event: EventName;
-  label?: string;
-  tier?: string;
-  source?: string;
-  value?: number;
-}
+type DataLayerWindow = Window & {
+  dataLayer?: Array<Record<string, unknown>>;
+};
 
-declare global {
-  interface Window {
-    dataLayer?: Record<string, unknown>[];
-  }
-}
-
-export function trackEvent({ event, ...props }: TrackEventProps): void {
+export function track(event: string, params: TrackParams = {}): void {
   if (typeof window === 'undefined') return;
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event, ...props });
+  const w = window as DataLayerWindow;
+  if (!w.dataLayer) w.dataLayer = [];
+  w.dataLayer.push({ event, ...params });
+}
+
+export function trackPageView(path: string): void {
+  track('page_view', { page_path: path });
 }

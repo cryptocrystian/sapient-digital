@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import AuditPageShell, { TM } from '@/components/audit/AuditPageShell';
 
 export const metadata: Metadata = {
-  title: 'PR Presence Audit',
+  title: 'Digital PR Scorecard',
   description:
-    'Free diagnostic of your media coverage, pitch placement rate, and journalist relationship depth versus your top competitors.',
+    'A free diagnostic of your earned media presence, message pull-through, and journalist relationship depth — benchmarked against your category.',
 };
 
 export default function AuditPrPage() {
@@ -12,19 +12,17 @@ export default function AuditPrPage() {
     <AuditPageShell
       badge={
         <>
-          Signal Engine
-          <TM /> · PR Presence Audit · Free
+          The Resultant Scorecard<TM /> · Digital PR
         </>
       }
       headline={
         <>
-          Your PR presence,{' '}
-          <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>scored.</em>
+          Your earned media presence, <em>scored.</em>
         </>
       }
-      subhead="A free diagnostic of your media coverage, pitch placement rate, and journalist relationship depth — versus your top competitors."
+      subhead="A free diagnostic of your earned media presence, message pull-through, and journalist relationship depth — benchmarked against your category."
       entryPath="pr"
-      ctaLabel="Get my PR audit"
+      ctaLabel="Score My PR Presence →"
     />
   );
 }

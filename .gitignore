@@ -35,3 +35,15 @@ next-env.d.ts
 # Claude Code — local-only state. Canon docs in .claude/ are tracked explicitly.
 /.claude/settings.local.json
 /.claude/worktrees/
+
+# Legacy parked directories — not part of the Resultant rebrand
+/agency-os/
+/parked/
+
+# Impeccable session artifacts
+/.impeccable/
+**/.impeccable/
+
+# Claude Code skills + agents (local-only; canon kept elsewhere)
+/.claude/skills/
+/.claude/agents/

@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import AuditPageShell, { TM } from '@/components/audit/AuditPageShell';
 
 export const metadata: Metadata = {
-  title: 'Search & AI Visibility Audit',
+  title: 'Search & AI Visibility Scorecard',
   description:
-    'Free diagnostic of how your brand performs across Google, ChatGPT, Perplexity, Gemini, and Bing — versus competitors.',
+    'A free diagnostic of how your brand performs across traditional search and AI-assisted research — sampled across ChatGPT, Gemini, Google AI, Perplexity, and Bing.',
 };
 
 export default function AuditVisibilityPage() {
@@ -12,19 +12,17 @@ export default function AuditVisibilityPage() {
     <AuditPageShell
       badge={
         <>
-          Signal Engine
-          <TM /> · Search & AI Visibility Audit · Free
+          The Resultant Scorecard<TM /> · Search &amp; AI Visibility
         </>
       }
       headline={
         <>
-          Your visibility in search and AI,{' '}
-          <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>scored.</em>
+          Your visibility in search &amp; AI, <em>scored.</em>
         </>
       }
-      subhead="A free diagnostic of how your brand performs across Google, ChatGPT, Perplexity, Gemini, and Bing — versus competitors."
+      subhead="A free diagnostic of how your brand performs across traditional search and AI-assisted research — sampled across prompt clusters and compared against named competitors."
       entryPath="ai"
-      ctaLabel="Get my visibility audit"
+      ctaLabel="Score My Visibility →"
     />
   );
 }

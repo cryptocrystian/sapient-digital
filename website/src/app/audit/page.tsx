@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import AuditClient from './AuditClient';
 
 export const metadata: Metadata = {
-  title: 'Free Visibility Audit',
+  title: 'The Resultant Scorecard™ — Free Diagnostic',
   description:
-    "Score your brand's PR presence, content coverage, and AI citation rank across Google, ChatGPT, Perplexity, Gemini, and Bing. Free, 30-second diagnostic.",
+    "Score your market presence across digital PR, strategic content, and search & AI visibility. Free 60-second diagnostic sampled across ChatGPT, Gemini, Google AI, Perplexity, and Bing. Human-reviewed results. No credit card.",
 };
 
 export default function AuditPage() {
