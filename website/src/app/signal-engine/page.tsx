@@ -1,3 +1,5 @@
+// Archived — original Signal Engine homepage preserved for reference.
+// The new Resultant Framework homepage lives at /.
 import type { Metadata } from 'next';
 import SiteNav from '@/components/nav/SiteNav';
 import Hero from '@/components/sections/Hero';
@@ -12,12 +14,12 @@ import Close from '@/components/sections/Close';
 import SiteFooter from '@/components/nav/SiteFooter';
 
 export const metadata: Metadata = {
-  // Title intentionally omitted — root metadata.default in layout.tsx is what we want.
-  description:
-    'PR, content, and AI presence engineered to compound. The Signal Engine™ integrates three disciplines so every placement feeds your AI citation rank and every citation accelerates the next placement.',
+  title: 'Signal Engine — Archived',
+  description: 'Archived view of the Signal Engine homepage design (superseded by the Resultant Framework homepage at /).',
+  robots: { index: false, follow: false },
 };
 
-export default function HomePage() {
+export default function SignalEngineArchivePage() {
   return (
     <>
       <SiteNav />
