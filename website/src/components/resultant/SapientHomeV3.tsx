@@ -14,7 +14,7 @@ function VisualSlot({number,title,brief,kind='asset'}:{number:string,title:strin
 export default function SapientHomeV3(){
  return <main className={s.site}>
   <section className={s.hero} id="top" aria-labelledby="hero-title">
-   <div className={s.heroPhoto} aria-hidden="true"/><div className={s.heroAsset}><VisualSlot number="01" kind="signature photography" title="Approved pilot / helmet" brief="Use the existing selected helmet image. Preserve its original shape and visor; edit, do not regenerate."/></div>
+   <div className={s.heroPhoto} aria-hidden="true"/>
    <div className={s.heroWash} aria-hidden="true"/>
    <div className={s.nav}><ResultantNav/></div>
    <div className={s.heroGrid}>
