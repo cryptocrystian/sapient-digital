@@ -5,10 +5,10 @@ export default function ResultantNav() {
         Sapient<em>·</em>Digital
       </a>
       <div className="rs-nav__links">
-        <a className="rs-nav__link" href="#worldview">Worldview</a>
+        <a className="rs-nav__link" href="#worldview">Perspective</a>
         <a className="rs-nav__link" href="/approach">Approach</a>
         <a className="rs-nav__link" href="#services">Services</a>
-        <a className="rs-nav__link" href="#thinking">Thinking</a>
+        <a className="rs-nav__link" href="/insights">Insights</a>
         <a className="rs-nav__link" href="/about">About</a>
       </div>
       <a
