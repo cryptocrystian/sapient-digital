@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google';
 import ResultantHero from '@/components/resultant/ResultantHero';
 import ResultantWorldview from '@/components/resultant/ResultantWorldview';
 import ResultantPivot from '@/components/resultant/ResultantPivot';
@@ -10,27 +9,6 @@ import ResultantThinking from '@/components/resultant/ResultantThinking';
 import ResultantDecision from '@/components/resultant/ResultantDecision';
 import '@/styles/resultant.css';
 
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const interTight = Inter_Tight({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-inter-tight',
-  display: 'swap',
-});
-
-const jetBrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-jbmono',
-  display: 'swap',
-});
-
 export const metadata: Metadata = {
   title: 'Resultant System — Preview',
   description:
@@ -39,10 +17,9 @@ export const metadata: Metadata = {
 };
 
 export default function ResultantSystemPreviewPage() {
-  const fontClasses = `${inter.variable} ${interTight.variable} ${jetBrainsMono.variable}`;
 
   return (
-    <div className={`resultant-root ${fontClasses}`}>
+    <div className="resultant-root">
       <div className="rs-page">
         <ResultantHero />
         <ResultantWorldview />
